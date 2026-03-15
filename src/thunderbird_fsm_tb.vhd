@@ -109,13 +109,13 @@ begin
 	test_plan : process
 	begin
 	
-	w_reset <= '1';
-	w_left <= '0';
-	w_right <= '0';
-	wait for k_clk_period *2;
+	   w_reset <= '1';
+	   w_left <= '0';
+	   w_right <= '0';
+	   wait for k_clk_period *2;
 	
 	wait;
-	end process;
+    end process;
 	-----------------------------------------------------	
 	
-end;
+end test_bench;

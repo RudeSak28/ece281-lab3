@@ -111,10 +111,10 @@ architecture thunderbird_fsm_arch of thunderbird_fsm is
 	o_lights_R(0) <= ( (not f_Q(2) and f_Q(1)) or (not f_Q(2) and f_Q(0)) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))) );
 	
 	o_lights_L(1) <= ((f_Q(2)and f_Q(1)) or ((not f_Q(2)) and (not f_Q(1)) and (f_Q(0))));
-	o_lights_R(1) <= ((not f_Q(2)and f_Q(1)) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))));
+	o_lights_R(1) <= ((not f_Q(2)and f_Q(0)) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))));
 	
 	o_lights_L(2) <= ( (f_Q(2) and f_Q(1) and f_Q(0) ) or ((not f_Q(2)) and (not f_Q(1)) and f_Q(0)) );
-	o_lights_R(2) <= ( ((not f_Q(2)) and (f_Q(0)) and f_Q(0) ) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))) );
+	o_lights_R(2) <= ( ((not f_Q(2)) and (not f_Q(0)) and f_Q(0) ) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))) );
 	
 	--o_lights_R(0) <=
     ---------------------------------------------------------------------------------

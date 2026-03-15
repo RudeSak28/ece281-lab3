@@ -130,6 +130,18 @@ begin
        w_left <= '0';
        wait for k_clk_period;
        
+       w_right <= '1';
+       wait for k_clk_period;
+       assert (w_lights_L = "000" and w_lights_R = "001") report "R1 wrong" severity failure;
+       
+       wait for k_clk_period;
+       assert (w_lights_L = "000" and w_lights_R = "011") report "R2 wrong" severity failure;
+       
+       wait for k_clk_period;
+       assert (w_lights_L = "000" and w_lights_R = "111") report "R3 wrong" severity failure;
+       
+       w_right <= '0';
+       wait for k_clk_period *2;
        wait;
     end process;
 	-----------------------------------------------------	

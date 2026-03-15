@@ -107,14 +107,14 @@ architecture thunderbird_fsm_arch of thunderbird_fsm is
 	f_Q_next(1) <= ((not f_Q(2)) and (not f_Q(1)) and (not f_Q(0)) and (not i_left) and i_right) or ((not f_Q(2)) and f_Q(1) and (not f_Q(0))) or (f_Q(2) and (not f_Q(1)) and f_Q(0)) or (f_Q(2) and f_Q(1) and (not f_Q(0)));
 	f_Q_next(0) <= ( ((not f_Q(2))and (not f_Q(1)) and (not f_Q(0)) and i_left ) or (f_Q(1) and (not f_Q(0))));
 	--Output logic
-	o_lights_L(0) <= ((f_Q(2)and f_Q(1)) or ((not f_Q(2)) and (f_Q(0))));
+	o_lights_L(0) <= ((f_Q(2)and f_Q(1)) or ((not f_Q(1)) and (f_Q(0))));
 	o_lights_R(0) <= ( (not f_Q(2) and f_Q(1)) or (not f_Q(2) and f_Q(0)) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))) );
 	
 	o_lights_L(1) <= ((f_Q(2)and f_Q(1)) or ((not f_Q(2)) and (not f_Q(1)) and (f_Q(0))));
 	o_lights_R(1) <= ((not f_Q(2)and f_Q(1)) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))));
 	
 	o_lights_L(2) <= ( (f_Q(2) and f_Q(1) and f_Q(0) ) or ((not f_Q(2)) and (not f_Q(1)) and f_Q(0)) );
-	o_lights_R(2) <= ( ((not f_Q(2)) and (not f_Q(1)) and f_Q(0) ) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))) );
+	o_lights_R(2) <= ( ((not f_Q(2)) and (f_Q(0)) and f_Q(0) ) or (f_Q(2) and (not f_Q(1)) and (not f_Q(0))) );
 	
 	--o_lights_R(0) <=
     ---------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ architecture thunderbird_fsm_arch of thunderbird_fsm is
 	-----------------------------------------------------					   
     begin 
         if i_reset = '1' then
-            f_Q <= "001";
+            f_Q <= "000";
          elsif(rising_edge(i_clk)) then
             f_Q <= f_Q_next;
          end if;

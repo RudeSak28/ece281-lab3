@@ -117,31 +117,41 @@ begin
        w_left <= '1';
        wait for k_clk_period;
        assert (w_lights_L = "001" and w_lights_R = "000") report "L1 wrong" severity failure;
-       
        wait for k_clk_period;
        assert (w_lights_L = "011" and w_lights_R = "000") report "L2 wrong" severity failure;
-       
        wait for k_clk_period;
        assert (w_lights_L = "111" and w_lights_R = "000") report "L3 wrong" severity failure;
-       
        wait for k_clk_period;
        assert (w_lights_L = "000" and w_lights_R = "000") report "left state did not turn off" severity failure;
-       
        w_left <= '0';
        wait for k_clk_period;
+       
        
        w_right <= '1';
        wait for k_clk_period;
        assert (w_lights_L = "000" and w_lights_R = "001") report "R1 wrong" severity failure;
-       
        wait for k_clk_period;
        assert (w_lights_L = "000" and w_lights_R = "011") report "R2 wrong" severity failure;
-       
        wait for k_clk_period;
        assert (w_lights_L = "000" and w_lights_R = "111") report "R3 wrong" severity failure;
-       
+       wait for k_clk_period;
+       assert (w_lights_L = "000" and w_lights_R = "000") report "right state did not turn off" severity failure;
        w_right <= '0';
        wait for k_clk_period *2;
+       
+       w_right <= '1';
+       w_left <= '1';
+       wait for k_clk_period;
+       assert (w_lights_L = "111" and w_lights_R = "111") report "hazards wrong" severity failure;
+       
+       
+       wait for k_clk_period;
+       assert (w_lights_L = "000" and w_lights_R = "000") report "all off wrong" severity failure;
+       
+       w_right <= '0';
+       w_left <= '0';
+       wait for k_clk_period*2;
+      
        wait;
     end process;
 	-----------------------------------------------------	

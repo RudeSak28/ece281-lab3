@@ -81,6 +81,8 @@
 --|    s_<signal name>          = state name
 --|
 --+----------------------------------------------------------------------------
+--Doc statment: Used Gemini to help diagnose a process refresh error. It helped get rid of whitespaces in my code however it did not
+--work. Ended up restarting vivado and that resolved the issue. No addtional help was recevied.
 library ieee;
   use ieee.std_logic_1164.all;
   use ieee.numeric_std.all;
